@@ -1,0 +1,114 @@
+#include<iostream>
+using namespace std;
+#include <string.h>
+string a[10]={"paper+pencil","pencil+questionpaper","paper+questionpaper"};
+static int i=0,m=0;
+int s[3]={1,2,3};//student 1 with pencil, student 2 with question paper, student 3 with paper
+int pickup(string x,int y)
+{int i=0,t=0;
+string a,b;
+int u=x.size();
+while(i<u)
+
+{
+	if(x[i]!='+'&&t==0)
+    {
+	a+=x[i];
+	}	
+	if(x[i]=='+')
+	{
+		t=1;
+	}
+	if(x[i]!='+'&&t==1)
+    {
+	b+=x[i];
+	}
+	i++;
+}
+  cout<<"Teacher has given the things  "<<a<<" "<<b<<"  on the shared table to the student"<<y<<endl; 
+	if(y==1)
+	{
+		if((a=="paper"&&b=="questionpaper")||(b=="paper"&&a=="questionpaper"))
+		{
+			return 1;
+		}
+		else
+		{
+		 cout<<"Teacher has given the things  "<<a<<" "<<b<<"it does not complete assignment of"<<y<<endl;
+		return 0;
+	}
+	}
+	
+	if(y==2)
+	{
+		if((a=="paper"&&b=="pencil")||(b=="paper"&&a=="pencil"))
+		{
+			return 1;
+		}
+		else
+		{
+		 cout<<"Teacher has given the things  "<<a<<" "<<b<<"it does not complete assignment of"<<y<<endl;
+		return 0;
+	}
+	}
+   if(y==3)
+	{
+		if((a=="pencil"&&b=="questionpaper")||(b=="pencil"&&a=="questionpaper"))
+		{
+			return 1;
+		}
+		else
+	{
+		 cout<<"Teacher has given the things  "<<a<<" "<<b<<"it does not complete assignment of"<<y<<endl;
+		return 0;
+	}
+	}
+
+
+	
+}
+void putdown(string z,int c)
+{	i++;
+
+ cout<<"student "<<c<<"  has signalled teacher he has completed the  assigment  "<<endl; 
+   		if(i==3)
+		   {i=0;}
+}
+
+int main() 
+{ 
+ int j=0;
+   
+   	Think:
+   		
+   		while(m<=2)
+   {
+   	int u=pickup(a[i],s[j]);
+   	
+   	
+   	if(u==1)
+   	{
+   		putdown(a[i],s[j]);
+   	     m++;
+   	    j++;
+   	    if(j==3)
+   	    {
+   	    	j=0;
+		   }
+         goto Think;
+   		
+    }
+	   
+	else
+	j++;
+	if(j==3)
+	{
+		j=0;
+	}
+	goto Think;
+	
+}
+	
+}
+	
+ 
